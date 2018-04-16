@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:context="http://www.springframework.org/schema/context"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:tx="http://www.springframework.org/schema/tx"
+	xmlns:aop="http://www.springframework.org/schema/aop"
+	xsi:schemaLocation="
+        http://www.springframework.org/schema/beans     
+        http://www.springframework.org/schema/beans/spring-beans-4.0.xsd
+        http://www.springframework.org/schema/context
+        http://www.springframework.org/schema/context/spring-context-4.0.xsd
+        http://www.springframework.org/schema/aop
+        http://www.springframework.org/schema/aop/spring-aop-4.0.xsd
+        http://www.springframework.org/schema/tx
+        http://www.springframework.org/schema/tx/spring-tx-4.0.xsd">
+   	<!-- 自动扫描dao和service包(自动注入) -->
+	<context:component-scan base-package="cn.chmobile.ai.common.dao.*" />
+	<context:component-scan base-package="cn.chmobile.ai.common.service.*" />
+	<context:component-scan base-package="cn.chmobile.ai.modules.common.jcaptcha.*" />
+	<!-- 扫描注解Bean -->
+	<context:component-scan base-package="cn.chmobile.ai.modules.**.service" />
+
+	<context:component-scan base-package="cn.chmobile.ai.modules.common.interceptor">
+		<context:exclude-filter type="annotation"
+			expression="org.springframework.stereotype.Controller" />
+	</context:component-scan>
+	
+ 	<import resource="spring-config-mybatis.xml" />
+	<import resource="spring-config-cache.xml" />
+	<import resource="spring-config-shiro.xml" />
+	<import resource="spring-config-extend.xml" />
+
+</beans>

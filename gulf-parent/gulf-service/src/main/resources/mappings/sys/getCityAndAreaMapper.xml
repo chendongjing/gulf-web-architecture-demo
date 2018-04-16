@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="cn.chmobile.ai.modules.sys.dao.IGetCityAndAreaDao" >
+	
+	<select id="selectByVrank" parameterType="cn.chmobile.ai.util.PageData" resultType="cn.chmobile.ai.util.PageData">
+		SELECT
+		vid,
+		vname,
+		vrank,
+		pid,
+		pname,
+		lng,
+		lat
+		FROM
+		dim_city_dist_eci
+		WHERE
+		vrank &lt; #{vrank,jdbcType=INTEGER}
+	</select>
+	
+</mapper>

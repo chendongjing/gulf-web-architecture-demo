@@ -1,0 +1,257 @@
+* {
+	margin: 0;
+	padding: 0;
+}
+
+a {
+	text-decoration: none;
+}
+
+li {
+	list-style: none;
+}
+
+html {
+	height: 100%;
+}
+
+body {
+	background: url(../images/bj_pic.jpg) 0 0 no-repeat;
+	-webkit-background-size: 100% 100%;
+	background-size: 100% 100%;
+	font-family: "Microsoft YaHei";
+	color: #e7f2f5;
+	height: 100%;
+	position: relative;
+}
+
+.clearfloat:before {
+	clear: both;
+	height: 0;
+	content: "";
+	visibility: hidden;
+	display: block;
+}
+
+div, ul, li, p {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+
+input {
+	background: none;
+	outline: none;
+	border: 0;
+}
+
+i {
+	display: inline-block;
+}
+/*全局样式 start*/
+html {
+	line-height: 1.15; /* 1 */
+	-ms-text-size-adjust: 100%; /* 2 */
+	-webkit-text-size-adjust: 100%; /* 2 */
+}
+
+body {
+	font-size: 0.14rem
+}
+
+div, ul, li, p, input {
+	-webkit-box-sizing: border-box;
+	-moz-box-sizing: border-box;
+	box-sizing: border-box;
+}
+/*=============================*/
+/*===================中国移动logo=========================*/
+.hklogo {
+	position: absolute;
+	top: 0.3rem;
+	left: 0.33rem;
+}
+
+.hklogo img {
+	width: 2.7rem;
+}
+
+/*===================登录==========================*/
+.hklogin {
+	width: 5.77rem;
+	/*width: 400px;*/
+	margin: 0 auto;
+}
+
+.hklogin .hkaccount {
+	width: 100%;
+	padding-top: 0.78rem;
+}
+
+.hklogin .hkaccount .hkphoto {
+	text-align: center;
+	margin-bottom: 0.70rem;
+	font-size: 0.36rem;
+	font-family: "trends";
+}
+
+.hklogin .hkaccount .hkphoto span {
+	width: 1.14rem;
+	height: 1.14rem;
+	display: inline-block;
+}
+
+.hklogin .hkaccount .hkphoto span img {
+	width: 100%;
+}
+
+.hklogin .hkaccount .hkphoto p {
+	position: relative;
+	top: 0.1rem;
+}
+
+.hklogin .hkaccount .hkphoto p img {
+	width: 100%;
+}
+
+input[type=text], input[type=password] {
+	width: 100%;
+	height: 0.4rem;
+	background: none;
+	border: none;
+	border-bottom: 2px solid #eee;
+	padding-left: 0.4rem;
+	margin-bottom: 0.1rem;
+	color: #eee;
+	font-size: 0.18rem;
+}
+
+.hkop {
+	background: none;
+	border: none;
+	border-bottom: 2px solid #eee;
+}
+
+.hklogin .hkconttext {
+	margin-top: -40px;
+	width: 100%;
+	padding: 0.6rem 0 0 0;
+}
+
+.hklogin .hkconttext .hktxt {
+	width: 100%;
+	padding: 0.3rem 0 0 0;
+	position: relative;
+}
+
+.hklogin .hkconttext .hkcheckboxtxt2 {
+	
+}
+
+.hklogin .hkconttext .hkcheckboxtxt2 input.checkbix[type="checkbox"]+label
+	{
+	font-size: 0.16rem;
+}
+
+.hklogin .hkconttext .hkcheckboxtxt2 input.checkbix[type="checkbox"]+label>span
+	{
+	width: 0.3rem;
+	height: 0.3rem;
+	background: #AFD0F1;
+	font-size: 0.22rem;
+	border: 0px;
+}
+
+.hklogin .hkconttext .hktxt {
+	width: 100%;
+	padding: 0.2rem 0 0 0;
+	position: relative;
+}
+
+.hklogin form {
+	position: relative;
+}
+
+.hklogin form .hkicon_use {
+	width: 0.28rem;
+	height: 0.33rem;
+	background: url(../images/usename.png) 0 0 no-repeat;
+	background-size: 0.28rem 0.33rem;
+	position: absolute;
+	left: 0;
+	bottom: 0.21rem;
+}
+
+.hklogin form .hkicon_pass {
+	width: 0.22rem;
+	height: 0.29rem;
+	background: url(../images/password.png) 0 0 no-repeat;
+	background-size: 0.22rem 0.29rem;
+	position: absolute;
+	left: 0;
+	bottom: 0.21rem;
+}
+
+.hklogin form p {
+	margin-top: 5px;
+}
+
+.hklogin form p>input {
+	vertical-align: middle;
+}
+
+.hklogin form input[type=submit] {
+	width: 100%;
+	height: 0.70rem;
+	background-color: #ec718b;
+	text-align: center;
+	font-size: 0.28rem;
+	color: #e7f2f5;
+	margin: 0.50rem 0 0.55rem;
+	cursor: pointer;
+}
+
+.footer2 {
+	padding: 0.75rem 0 0 0;
+	text-align: center;
+	font-size: 0.18rem;
+}
+
+::-webkit-input-placeholder {
+	color: #C7E0F6;
+}
+
+::-moz-placeholder {
+	color: #C7E0F6;
+} /* firefox 19+ */
+:-ms-input-placeholder {
+	color: #C7E0F6;
+} /* ie */
+input:-moz-placeholder {
+	color: #C7E0F6;
+}
+
+@media only screen and (max-height: 760px) {
+	.login .account .photo {
+		margin-bottom: 0.30rem;
+	}
+	.login .conttext {
+		padding: 0.2rem 0 0 0;
+	}
+	.login form input[type=submit] {
+		margin: 0.30rem 0 0.35rem;
+	}
+	.footer2 {
+		padding: 0.15rem 0 0 0;
+	}
+}
+ 
+.hklogin form .icon_code {
+    width: 20px;
+    height: 20px;
+    margin-top: 27px;
+    background: url("../images/key.png") 0 0 no-repeat;
+    background-size: 0.28rem 0.33rem;
+    position: absolute;
+ 
+}

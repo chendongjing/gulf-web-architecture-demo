@@ -1,0 +1,134 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<web-app xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns="http://xmlns.jcp.org/xml/ns/javaee" xsi:schemaLocation="http://xmlns.jcp.org/xml/ns/javaee http://xmlns.jcp.org/xml/ns/javaee/web-app_3_1.xsd" id="WebApp_ID" version="3.1">
+
+<display-name>gulf</display-name>
+
+	<!-- 应用路径 -->
+	<context-param>
+		<param-name>webAppRootKey</param-name>
+		<param-value>spring.webapp.root</param-value>
+	</context-param>
+	
+	<!-- 指定Spring Bean的配置文件所在目录。默认配置在WEB-INF目录下 -->
+	<context-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath*:spring-context.xml</param-value>
+		<!--  多配置文件
+		<param-value>classpath:applicationContext-*.xml,/WEB-INF/applicationContext.xml</param-value>
+		-->
+	</context-param>
+
+	<!-- Spring配置 -->
+	<listener>
+		<listener-class>org.springframework.web.context.ContextLoaderListener</listener-class>
+	</listener>
+	
+	
+
+	<!-- Spring MVC配置 -->
+	<servlet>
+		<servlet-name>springServlet</servlet-name>
+		<servlet-class>org.springframework.web.servlet.DispatcherServlet</servlet-class>
+		<!-- 可以自定义servlet.xml配置文件的位置和名称，默认为WEB-INF目录下，名称为[<servlet-name>]-servlet.xml，如spring-servlet.xml -->
+		<init-param>
+		<param-name>contextConfigLocation</param-name>
+		<param-value>classpath:spring-mvc.xml</param-value>
+		<!--
+		<param-value>/WEB-INF/spring-mvc.xml</param-value>
+		-->
+		</init-param>
+		<load-on-startup>1</load-on-startup>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>springServlet</servlet-name>
+		<url-pattern>/</url-pattern>
+	</servlet-mapping>
+
+	<!-- 支持UTF-8编码 -->
+	<filter>
+		<filter-name>encodingFilter</filter-name>
+		<filter-class>org.springframework.web.filter.CharacterEncodingFilter</filter-class>
+		<init-param>
+			<param-name>encoding</param-name>
+			<param-value>UTF-8</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>encodingFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<!-- shiro 安全过滤器 -->
+	<filter>
+		<filter-name>shiroFilter</filter-name>
+		<filter-class>org.springframework.web.filter.DelegatingFilterProxy</filter-class>
+		<async-supported>true</async-supported>
+		<init-param>
+			<param-name>targetFilterLifecycle</param-name>
+			<param-value>true</param-value>
+		</init-param>
+	</filter>
+	<listener>
+		<listener-class>org.springframework.web.context.request.RequestContextListener</listener-class>
+	</listener>
+	<filter-mapping>
+		<filter-name>shiroFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+		<dispatcher>REQUEST</dispatcher>
+	</filter-mapping>
+	<!-- 验证码过滤器需要放到Shiro之后 因为Shiro将包装HttpSession 如果不 可能造成两次的sesison id 不一样 -->
+	<filter>
+		<filter-name>JCaptchaFilter</filter-name>
+		<filter-class>cn.chmobile.ai.modules.common.jcaptcha.JCaptchaFilter</filter-class>
+		<async-supported>true</async-supported>
+	</filter>
+	<filter-mapping>
+		<filter-name>JCaptchaFilter</filter-name>
+		<url-pattern>/jcaptcha.jpg</url-pattern>
+	</filter-mapping>
+	<!--druid 监控 -->
+	<filter>
+		<filter-name>DruidWebStatFilter</filter-name>
+		<filter-class>com.alibaba.druid.support.http.WebStatFilter</filter-class>
+		<async-supported>true</async-supported>
+		<init-param>
+			<param-name>exclusions</param-name>
+			<param-value>/static/*,*.js,*.gif,*.jpg,*.png,*.css,*.ico,/druid/*</param-value>
+		</init-param>
+		<init-param>
+			<param-name>principalSessionName</param-name>
+			<param-value>username</param-value>
+		</init-param>
+	</filter>
+	<filter-mapping>
+		<filter-name>DruidWebStatFilter</filter-name>
+		<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<!-- druid监控 -->
+	<servlet>
+		<servlet-name>DruidStatView</servlet-name>
+		<servlet-class>com.alibaba.druid.support.http.StatViewServlet</servlet-class>
+		<async-supported>true</async-supported>
+	</servlet>
+	<servlet-mapping>
+		<servlet-name>DruidStatView</servlet-name>
+		<url-pattern>/home/sys/monitor/druid/*</url-pattern>
+	</servlet-mapping>
+
+	<!-- sitemesh3 filter-->
+	<filter>
+	  	<filter-name>sitemesh</filter-name>
+	  	<filter-class>org.sitemesh.config.ConfigurableSiteMeshFilter</filter-class>
+	</filter>
+	<filter-mapping>
+	  	<filter-name>sitemesh</filter-name>
+	  	<url-pattern>/*</url-pattern>
+	</filter-mapping>
+
+	<welcome-file-list>
+		<welcome-file>index.jsp</welcome-file>
+	</welcome-file-list>
+	
+	
+</web-app>

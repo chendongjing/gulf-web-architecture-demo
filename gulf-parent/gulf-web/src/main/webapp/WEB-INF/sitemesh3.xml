@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<sitemesh>
+
+    <!-- 配置默认的渲染器. 将应用于所有路径. -->  
+    <mapping decorator="/WEB-INF/views/layouts/default.jsp"/>
+    
+    <!-- 配置特定路径的渲染器. -->
+    <mapping path="/*" decorator="/WEB-INF/views/layouts/default.jsp"/>
+	
+	<!-- 配置多个渲染器. -->  
+	<mapping>
+		<path>/articles/*</path>
+		<decorator>/decorators/article.html</decorator>
+		<decorator>/decorators/two-page-layout.html</decorator>
+		<decorator>/decorators/common.html</decorator>
+	</mapping>
+
+	<!-- 不被渲染的路径. -->  
+	<mapping path="/home" exclue="true"/>
+	
+	<!-- 增加自定义标签 -->  
+	<content-processor>
+	   <tag-rule-bundle class="cn.chmobile.ai.core.layout.sitemesh.ExtHtmlTagRuleBundle" />
+	</content-processor>
+</sitemesh>

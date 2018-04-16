@@ -1,0 +1,72 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.0.xsd"
+	default-lazy-init="true">
+
+	<description>Shiro安全配置</description>
+	
+	<!--see https://github.com/alibaba/druid/wiki/%E9%85%8D%E7%BD%AE_DruidDataSource%E5%8F%82%E8%80%83%E9%85%8D%E7%BD%AE -->
+	<bean id="dataSource" class="com.alibaba.druid.pool.DruidDataSource"
+		init-method="init" destroy-method="close">
+		<!-- 基本属性 url、user、password -->
+		<property name="url" value="${connection.url}" />
+		<property name="username" value="${connection.username}" />
+		<property name="password" value="${connection.password}" />
+		<property name="dbType" value = "${connection.dbType}" />
+
+		<!-- 配置初始化大小、最小、最大 -->
+		<property name="initialSize" value="${druid.initialSize}" />
+		<property name="minIdle" value="${druid.minIdle}" />
+		<property name="maxActive" value="${druid.maxActive}" />
+
+		<!-- 配置获取连接等待超时的时间 -->
+		<property name="maxWait" value="${druid.maxWait}" />
+		<!-- 配置间隔多久才进行一次检测，检测需要关闭的空闲连接，单位是毫秒 -->
+		<property name="timeBetweenEvictionRunsMillis" value="${druid.timeBetweenEvictionRunsMillis}" />
+
+		<!-- 配置一个连接在池中最小生存的时间，单位是毫秒 -->
+		<property name="minEvictableIdleTimeMillis" value="${druid.minEvictableIdleTimeMillis}" />
+
+		<property name="validationQuery" value="${druid.validationQuery}" />
+		<property name="testWhileIdle" value="${druid.testWhileIdle}" />
+		<property name="testOnBorrow" value="${druid.testOnBorrow}" />
+		<property name="testOnReturn" value="${druid.testOnReturn}" />
+
+		<!-- 打开PSCache，并且指定每个连接上PSCache的大小 如果用Oracle，则把poolPreparedStatements配置为true，mysql可以配置为false。 -->
+		<property name="poolPreparedStatements" value="${druid.poolPreparedStatements}" />
+		<property name="maxPoolPreparedStatementPerConnectionSize"
+			value="${druid.maxPoolPreparedStatementPerConnectionSize}" />
+
+		<!-- 配置监控统计拦截的filters -->
+		<property name="filters" value="${druid.filters}" />
+
+	</bean>
+	
+	<bean id="jdbcRealm" class="cn.chmobile.ai.shiro.JeeyxyJdbcRealm">
+        <property name="dataSource" ref="dataSource"></property>
+        <!-- 认证信息查询语句; default: select * from users where username = ? -->
+        <!-- 用户状态：0启用; 1禁用; 2删除 -->
+        <property name="authenticationQuery" value="SELECT * FROM sys_user WHERE LOGIN_NAME = ?"></property>
+        <!-- 密码列列名; default: password -->
+        <property name="passwordColumn" value="password"></property>
+        <!-- 角色查询语句(支持多个username=?); default: select role_name from user_roles where username = ?  -->
+        <property name="userRolesQuery" value="SELECT T3.NAME FROM sys_user T1 INNER JOIN sys_user_role T2 ON (T1.ID = T2.USER_ID) INNER JOIN sys_role  T3 ON (T2.ROLE_ID = T3.ID) WHERE T1.LOGIN_NAME = ?"></property>
+        <!-- 是否执行permissionsQuery权限查询; default: true -->
+        <property name="permissionsLookupEnabled" value="false"></property>
+        <!-- 权限查询语句(支持多个username=?); default: select permission from user_roles_permissions where username = ?"  -->
+        <property name="permissionsQuery" value="SELECT PERMISSION FROM user_roles_permissions WHERE USERNAME = ?"></property>
+        <!-- EasyJdbcRealm 拦截器，可以认证和授权信息获得后，对SimpleAuthenticationInfo认证和SimpleAuthorizationInfo授权信息进行额外处理 -->
+        <!-- 
+        <property name="interceptor" ref="realmInterceptor"></property> 
+        -->
+    </bean>
+    
+	<!-- 定义Shiro安全管理配置 -->
+	<bean id="securityManager" class="org.apache.shiro.web.mgt.DefaultWebSecurityManager">
+		<property name="realm" ref="jdbcRealm" />
+	</bean>
+
+	<!-- 保证实现了Shiro内部lifecycle函数的bean执行 --> 
+	<bean id="lifecycleBeanPostProcessor" class="org.apache.shiro.spring.LifecycleBeanPostProcessor"/> 
+
+</beans>

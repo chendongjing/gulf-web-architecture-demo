@@ -1,0 +1,173 @@
+﻿<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+  <modelVersion>4.0.0</modelVersion>
+  <groupId>cn.chmobile.ai</groupId>
+  <artifactId>gulf-parent</artifactId>
+  <version>0.0.1-SNAPSHOT</version>
+  <packaging>pom</packaging>
+  <modules>
+  	<module>gulf-web</module>
+  	<module>gulf-service</module>
+  	<module>gulf-core</module>
+  </modules>
+  
+  <properties>
+ 
+  
+  
+  
+		<tagcloud.version>0.0.1-SNAPSHOT</tagcloud.version>
+    	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    	<java.version>1.8</java.version>
+        <jackson.version>2.7.3</jackson.version>
+        <spring.version>4.2.5.RELEASE</spring.version>
+        <mybatis.version>3.3.1</mybatis.version>
+        <mybatis.spring.version>1.2.4</mybatis.spring.version>
+        <mysql.version>5.1.30</mysql.version>
+        <oltu.version>1.0.2</oltu.version>
+        <shiro.version>1.2.4</shiro.version>
+        <servlet-api.version>2.5</servlet-api.version>
+        <slf4j.version>1.6.4</slf4j.version>
+        <log4j.version>1.2.14</log4j.version>
+		<druid.version>1.0.9</druid.version>
+		
+        <hibernate-validator.version>5.2.4.Final</hibernate-validator.version>
+        
+        <!-- oracle -->
+		<oracle.version>10.2.0.4.0</oracle.version>
+		<poi.version>3.10-FINAL</poi.version>
+		<mybatis-ehcache>1.0.3</mybatis-ehcache>
+	</properties>
+	
+	<dependencies> 
+	
+		<!-- spring begin -->
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-context</artifactId>
+		    <version>${spring.version}</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-tx</artifactId>
+		    <version>${spring.version}</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-aop</artifactId>
+		    <version>${spring.version}</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-context-support</artifactId>
+		    <version>${spring.version}</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-web</artifactId>
+		    <version>${spring.version}</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.springframework</groupId>
+		    <artifactId>spring-webmvc</artifactId>
+		    <version>${spring.version}</version>
+		</dependency>
+		<dependency>
+		    <groupId>com.fasterxml.jackson.core</groupId>
+		    <artifactId>jackson-core</artifactId>
+		    <version>${jackson.version}</version>
+		</dependency>
+		<dependency>
+		    <groupId>com.fasterxml.jackson.core</groupId>
+		    <artifactId>jackson-databind</artifactId>
+		    <version>${jackson.version}</version>
+		</dependency>
+		<dependency>
+            <groupId>org.hibernate</groupId>
+            <artifactId>hibernate-validator</artifactId>
+            <version>${hibernate-validator.version}</version>
+        </dependency>
+        
+	    <!-- spring end -->
+	    
+	    
+        <!-- 日志处理 -->
+        <dependency>
+            <groupId>org.slf4j</groupId>
+            <artifactId>slf4j-log4j12</artifactId>
+            <version>${slf4j.version}</version>
+            <scope>compile</scope>
+        </dependency>
+        <dependency>
+            <groupId>log4j</groupId>
+            <artifactId>log4j</artifactId>
+            <version>${log4j.version}</version>
+            <scope>compile</scope>
+        </dependency>  
+        
+        <dependency>
+            <groupId>javax.servlet</groupId>
+            <artifactId>servlet-api</artifactId>
+            <version>${servlet-api.version}</version>
+            <scope>provided</scope>
+        </dependency>
+		
+		
+		 <!-- <dependency>
+            <groupId>com.oracle</groupId>
+            <artifactId>ojdbc14</artifactId>
+            <version>${oracle.version}</version>
+        </dependency> -->
+		<!-- https://mvnrepository.com/artifact/org.apache.poi/poi -->
+		<dependency>
+		    <groupId>org.apache.poi</groupId>
+		    <artifactId>poi</artifactId>
+		    <version>${poi.version}</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.apache.poi</groupId>
+		    <artifactId>poi-ooxml</artifactId>
+		    <version>${poi.version}</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.apache.poi</groupId>
+		    <artifactId>poi-scratchpad</artifactId>
+		    <version>${poi.version}</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.apache.poi</groupId>
+		    <artifactId>poi-examples</artifactId>
+		    <version>${poi.version}</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.apache.poi</groupId>
+		    <artifactId>poi-excelant</artifactId>
+		    <version>${poi.version}</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.apache.poi</groupId>
+		    <artifactId>poi-ooxml-schemas</artifactId>
+		    <version>${poi.version}</version>
+		</dependency>
+		<dependency>
+		    <groupId>org.mybatis.caches</groupId>
+		    <artifactId>mybatis-ehcache</artifactId>
+		    <version>${mybatis-ehcache}</version>
+		</dependency>
+	 </dependencies>
+	 
+	 <repositories>
+		<repository>
+			<id>alimaven</id>
+			<name>aliyun maven</name>
+			<layout>default</layout>
+			<url>http://maven.aliyun.com/nexus/content/groups/public/</url>
+		</repository>
+		
+		<repository>
+			<id>maven-repo2</id>
+			<name>maven-repo2</name>
+			<url>https://mvnrepository.com/artifact</url>
+		</repository>
+		
+	</repositories>
+</project>
