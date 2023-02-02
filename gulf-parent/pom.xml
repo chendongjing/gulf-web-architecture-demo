@@ -9,12 +9,8 @@
   	<module>gulf-service</module>
   	<module>gulf-core</module>
   </modules>
-  
+ <!-- springmvc的架构-->
   <properties>
- 
-  
-  
-  
 		<tagcloud.version>0.0.1-SNAPSHOT</tagcloud.version>
     	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     	<java.version>1.8</java.version>
@@ -29,9 +25,7 @@
         <slf4j.version>1.6.4</slf4j.version>
         <log4j.version>1.2.14</log4j.version>
 		<druid.version>1.0.9</druid.version>
-		
         <hibernate-validator.version>5.2.4.Final</hibernate-validator.version>
-        
         <!-- oracle -->
 		<oracle.version>10.2.0.4.0</oracle.version>
 		<poi.version>3.10-FINAL</poi.version>
@@ -40,7 +34,7 @@
 	
 	<dependencies> 
 	
-		<!-- spring begin -->
+		<!-- springMVC begin -->
 		<dependency>
 		    <groupId>org.springframework</groupId>
 		    <artifactId>spring-context</artifactId>
@@ -87,9 +81,7 @@
             <version>${hibernate-validator.version}</version>
         </dependency>
         
-	    <!-- spring end -->
-	    
-	    
+	    <!-- springMVC end -->
         <!-- 日志处理 -->
         <dependency>
             <groupId>org.slf4j</groupId>
@@ -110,7 +102,6 @@
             <version>${servlet-api.version}</version>
             <scope>provided</scope>
         </dependency>
-		
 		
 		 <!-- <dependency>
             <groupId>com.oracle</groupId>
@@ -154,7 +145,7 @@
 		    <version>${mybatis-ehcache}</version>
 		</dependency>
 	 </dependencies>
-	 
+	<!-- 使用aliyun的maven仓库 -->
 	 <repositories>
 		<repository>
 			<id>alimaven</id>
