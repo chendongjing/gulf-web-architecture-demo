@@ -55,6 +55,7 @@
 		<jdk.version>1.8</jdk.version>
 		<!-- 强制编码 -->
 		<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+		<postgresql.version>42.2.22</postgresql.version>
 	</properties>
   <dependencies>
 		<dependency>
@@ -446,6 +447,12 @@
 			<version>${mysql.version}</version>
 			<type>jar</type>
 			<scope>compile</scope>
+		</dependency>
+		
+		<dependency>
+			<groupId>org.postgresql</groupId>
+			<artifactId>postgresql</artifactId>
+			<version>${postgresql.version}</version>
 		</dependency>
 		<!-- 这个需要根据自己的jdk版本配置 -->
 		<dependency>
