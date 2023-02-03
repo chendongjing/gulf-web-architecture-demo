@@ -14,7 +14,7 @@
 		<tagcloud.version>0.0.1-SNAPSHOT</tagcloud.version>
     	<project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     	<java.version>1.8</java.version>
-        <jackson.version>2.7.3</jackson.version>
+        <jackson.version>2.12.7.1</jackson.version>
         <spring.version>4.2.5.RELEASE</spring.version>
         <mybatis.version>3.3.1</mybatis.version>
         <mybatis.spring.version>1.2.4</mybatis.spring.version>
